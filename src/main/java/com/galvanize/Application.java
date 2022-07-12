@@ -1,26 +1,37 @@
 package com.galvanize;
 
 public class Application {
-
-    public static void main(String[] args){
-        if (args.length < 1){
-            System.out.println("Please specify a number");
+    public static String fizzBuzz(int x){
+        if (x % 3 ==0 && x % 5 == 0){
+            return "FizzBuzz";
+        }
+        else if (x % 3 ==0){
+            return "Fizz";
+        }
+        else if (x % 5 == 0){
+            return "Buzz";
         }
         else {
-            int number = Integer.parseInt(args[0]);   // arg1
-            if (number % 3 ==0 && number % 5 == 0){
-                System.out.println("FizzBuzz");
-            }
-            else if (number % 3 ==0){
-                System.out.println("Fizz");
-            }
-            else if (number % 5 == 0){
-                System.out.println("Buzz");
-            }
-            else{
-                System.out.println(args[0]);
-                System.out.println(args[0].getClass().getSimpleName());
-            }
+            return String.format("%s Is A Integer",x);
         }
     }
+    public static boolean isInt(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+    public static void main(String[] args){
+        if (args.length < 1 || !isInt(args[0])) {
+            System.out.println("Please specify a number!");
+        }
+        else{
+            int number = Integer.parseInt(args[0]);
+            System.out.println(fizzBuzz(number));
+        }
+    }
+
+
 }
